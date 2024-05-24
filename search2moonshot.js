@@ -132,7 +132,7 @@
       
       switch (SEARCH_SERVICE) {
         case "search1api":
-          const search1apiResponse = await fetch("https://search.search2ai.one", {
+          const search1apiResponse = await fetch("https://api.search1api.com/search/", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -141,7 +141,7 @@
             body: JSON.stringify({
               query,
               max_results: typeof MAX_RESULTS !== "undefined" ? MAX_RESULTS : "5",
-              crawl_results: typeof CRAWL_RESULTS !== "undefined" ? MAX_RESULTS : "0",
+              crawl_results: typeof CRAWL_RESULTS !== "undefined" ? CRAWL_RESULTS : "0",
             }),
           });
           results = await search1apiResponse.json();
@@ -261,7 +261,7 @@
       
       switch (SEARCH_SERVICE) {
         case "search1api":
-          const search1apiResponse = await fetch("https://search.search2ai.one/news", {
+          const search1apiResponse = await fetch("https://api.search1api.com/news", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -270,7 +270,7 @@
             body: JSON.stringify({
               query,
               max_results: typeof MAX_RESULTS !== "undefined" ? MAX_RESULTS : "10",
-              crawl_results: typeof CRAWL_RESULTS !== "undefined" ? MAX_RESULTS : "0",
+              crawl_results: typeof CRAWL_RESULTS !== "undefined" ? CRAWL_RESULTS : "0",
             }),
           });
           results = await search1apiResponse.json();

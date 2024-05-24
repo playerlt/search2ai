@@ -113,7 +113,7 @@
       
       switch (SEARCH_SERVICE) {
         case "search1api":
-          const search1apiResponse = await fetch("https://search.search2ai.one/search", {
+          const search1apiResponse = await fetch("https://api.search1api.com/search/", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -123,7 +123,7 @@
               query,
               search_service: "google",
               max_results: typeof MAX_RESULTS !== "undefined" ? MAX_RESULTS : "5",
-              crawl_results: typeof CRAWL_RESULTS !== "undefined" ? MAX_RESULTS : "0",
+              crawl_results: typeof CRAWL_RESULTS !== "undefined" ? CRAWL_RESULTS : "0",
             }),
           });
 
@@ -227,7 +227,6 @@
         results: results
       };
       
-console.log(`搜索结果: ${JSON.stringify(results)}`);
       return JSON.stringify(data);
       
     } catch (error) {
@@ -243,7 +242,7 @@ console.log(`搜索结果: ${JSON.stringify(results)}`);
       
       switch (SEARCH_SERVICE) {
         case "search1api":
-          const search1apiResponse = await fetch("https://search.search2ai.one/news", {
+          const search1apiResponse = await fetch("https://api.search1api.com/news", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -252,7 +251,7 @@ console.log(`搜索结果: ${JSON.stringify(results)}`);
             body: JSON.stringify({
               query,
               max_results: typeof MAX_RESULTS !== "undefined" ? MAX_RESULTS : "10",
-              crawl_results: typeof CRAWL_RESULTS !== "undefined" ? MAX_RESULTS : "0",
+              crawl_results: typeof CRAWL_RESULTS !== "undefined" ? CRAWL_RESULTS : "0",
             }),
           });
           results = await search1apiResponse.json();
@@ -778,7 +777,6 @@ console.log(`搜索结果: ${JSON.stringify(results)}`);
       }
       if (calledCustomFunction) {
         console.log("\u51C6\u5907\u53D1\u9001\u7B2C\u4E8C\u6B21 OpenAI API \u8BF7\u6C42");
-        console.log("Messages before sending second request:", JSON.stringify(messages, null, 2));
         const requestBody = {
           model,
           messages
